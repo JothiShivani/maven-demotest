@@ -35,22 +35,31 @@ pipeline {
             }
         }
         
+        // stage('Run SonarCloud') {
+        //     steps {
+        //         withSonarQubeEnv('SonarQube Scanner') {
+                
+        //         //     -Dsonar.exclusion=**/*.java \
+        //         //     -Dsonar.java.binaries=target/classes"
+                
+
+
+        //         bat "${scannerHome}/bin/sonar-scanner \
+        //         -Dsonar.projectKey=JothiShivani_maven-demotest \
+        //         -Dsonar.organization=jothishivani \
+        //         -Dsonar.host.url=https://sonarcloud.io \         
+        //         -Dsonar.login=${SONAR_TOKEN}" 
+                
+
+        //         }
+        //     }
+        // }
+
         stage('Run SonarCloud') {
             steps {
                 withSonarQubeEnv('SonarQube Scanner') {
-                
-                //     -Dsonar.exclusion=**/*.java \
-                //     -Dsonar.java.binaries=target/classes"
-                
-
-
-                bat "${scannerHome}/bin/sonar-scanner \
-                -Dsonar.projectKey=JothiShivani_maven-demotest \
-                -Dsonar.organization=jothishivani \
-                -Dsonar.host.url=https://sonarcloud.io \         
-                -Dsonar.login=${SONAR_TOKEN}" 
-                
-
+                    // Run SonarQube Scanner in a single line
+                    bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=JothiShivani_maven-demotest -Dsonar.organization=jothishivani -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONAR_TOKEN}"
                 }
             }
         }
