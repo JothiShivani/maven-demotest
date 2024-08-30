@@ -4,7 +4,8 @@ pipeline {
     environment {
      
         scannerHome = tool 'SonarQube Scanner'                   
-        SONAR_TOKEN = 'ccb2f9a330bbe716189a142e162b3ea84cf44c2b'                            
+        SONAR_TOKEN = 'ccb2f9a330bbe716189a142e162b3ea84cf44c2b'    
+        MAVEN_OPTS = '-Xms256m -Xmx1024m'                         
     }
 
     stages {
